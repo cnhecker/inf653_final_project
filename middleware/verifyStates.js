@@ -10,7 +10,7 @@ const verifyStates = () => {
             return fileItem.code;
         });
         const result = stateCodes.find((stateCode) => stateCode.toUpperCase() === req.params.state.toUpperCase());
-        if (!result) return res.sendStatus(404);
+        if (!result) return res.status(400).json({ 'message': 'Invalid state abbreviation parameter' });
         next();
     }
 }
